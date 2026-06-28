@@ -1,7 +1,9 @@
-const BASE_URL = "https://portfolio-innofaso.onrender.com/api";
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL?.replace(/\/$/, "") ||
+  "https://portfolio-innofaso.onrender.com/api";
 
 async function request(path, options = {}) {
-  const res = await fetch(`${BASE_URL}${path}`, {
+  const res = await fetch(`${API_BASE_URL}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
@@ -13,7 +15,7 @@ async function request(path, options = {}) {
 }
 
 async function uploadRequest(path, formData) {
-  const res = await fetch(`${BASE_URL}${path}`, { method: "POST", body: formData });
+  const res = await fetch(`${API_BASE_URL}${path}`, { method: "POST", body: formData });
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.error || `Erreur API (${res.status})`);

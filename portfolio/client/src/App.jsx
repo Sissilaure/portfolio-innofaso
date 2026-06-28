@@ -1,5 +1,5 @@
-ï»¿import { useEffect, useState } from "react";
-import { api } from "./data/api";
+import { useEffect, useState } from "react";
+import { api, API_BASE_URL } from "./data/api";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -29,10 +29,10 @@ export default function App() {
     return (
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12, padding: 24, textAlign: "center" }}>
         <p style={{ fontFamily: "var(--font-mono)", color: "var(--status-critical)" }}>
-          Impossible de charger les donnÃ©es du portfolio.
+          Impossible de charger les données du portfolio.
         </p>
         <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
-          VÃ©rifiez que le serveur backend tourne bien sur <code>http://localhost:5000</code>.
+          Vérifiez que le serveur backend tourne bien sur <code>{API_BASE_URL}</code>.
         </p>
         <p style={{ color: "var(--ink-faint)", fontSize: 12 }}>{error}</p>
       </div>
