@@ -1,4 +1,4 @@
-const BASE_URL = "https://portfolio-server.onrender.com/api";
+const BASE_URL = "https://portfolio-innofaso.onrender.com/api";
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
