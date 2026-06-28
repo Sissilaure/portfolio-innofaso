@@ -1,0 +1,253 @@
+﻿/* client/src/styles/tokens.css
+   SystÃ¨me de design v2 â€” direction "rapport de terrain vivant"
+   Palette inspirÃ©e d'InnoFaso (vert nutrition/santÃ©) + accents chauds,
+   typographie plus travaillÃ©e, surfaces en cartes avec relief.
+*/
+
+:root {
+  /* Fond */
+  --bg: #FBFAF6;
+  --bg-alt: #F3F0E6;
+  --surface: #FFFFFF;
+  --surface-tint: #F6F7F2;
+
+  /* Encre / texte */
+  --ink: #161A14;
+  --ink-soft: #343B31;
+  --ink-faint: #69715F;
+  --line: #E6E2D4;
+  --line-strong: #D2CCB6;
+
+  /* Vert InnoFaso â€” accent principal (nutrition, santÃ©, conformitÃ©) */
+  --brand: #1F7A4D;
+  --brand-deep: #145E3A;
+  --brand-bright: #2FA866;
+  --brand-tint: #E3F2E8;
+  --brand-tint-strong: #C9E8D4;
+
+  /* Accent chaud secondaire â€” terre/Sahel, contrepoint du vert */
+  --amber: #D97B29;
+  --amber-deep: #B5621A;
+  --amber-tint: #FBEBD8;
+
+  /* Codes couleur du dashboard (repris tels quels) */
+  --status-ok: #1F7A4D;
+  --status-ok-bg: #E3F2E8;
+  --status-warn: #D97B29;
+  --status-warn-bg: #FBEBD8;
+  --status-critical: #C13E2C;
+  --status-critical-bg: #FAE3DE;
+
+  /* Typographie */
+  --font-display: "Bricolage Grotesque", "Inter", sans-serif;
+  --font-accent: "Fraunces", "Bricolage Grotesque", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Ã‰chelle d'espacement */
+  --space-1: 0.5rem;
+  --space-2: 0.875rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+  --space-7: 8.5rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --shadow-card: 0 1px 2px rgba(22, 26, 20, 0.04), 0 8px 24px rgba(22, 26, 20, 0.06);
+  --shadow-lift: 0 6px 16px rgba(22, 26, 20, 0.08), 0 20px 48px rgba(22, 26, 20, 0.10);
+  --shadow-brand: 0 8px 28px rgba(31, 122, 77, 0.22);
+
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18.5px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Halo de couleur en fond, trÃ¨s doux, faÃ§on "atmosphÃ¨re produit" */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(720px 480px at 88% -8%, rgba(47, 168, 102, 0.14), transparent 60%),
+    radial-gradient(620px 420px at -8% 18%, rgba(217, 123, 41, 0.10), transparent 55%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.08;
+}
+
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); }
+
+::selection { background: var(--brand-bright); color: white; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brand-deep);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-4); }
+
+@media (max-width: 720px) {
+  .container { padding: 0 var(--space-3); }
+  :root { --space-6: 3.5rem; --space-7: 4.5rem; }
+}
+
+/* Eyebrow â€” Ã©tiquette de section */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+  background: var(--brand-tint);
+  padding: 0.4em 0.85em 0.4em 0.6em;
+  border-radius: 999px;
+  border: 1px solid var(--brand-tint-strong);
+}
+.eyebrow::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brand-bright);
+  flex-shrink: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 0.32em 0.75em;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.badge.ok { background: var(--status-ok-bg); color: var(--status-ok); }
+.badge.warn { background: var(--status-warn-bg); color: var(--status-warn); }
+.badge.critical { background: var(--status-critical-bg); color: var(--status-critical); }
+.badge.neutral { background: var(--surface-tint); color: var(--ink-faint); border: 1px solid var(--line); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1em 2em;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.02rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--brand);
+  color: white;
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover {
+  background: var(--brand-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(31, 122, 77, 0.3);
+}
+.btn-outline {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1.5px solid var(--line-strong);
+}
+.btn-outline:hover {
+  border-color: var(--brand);
+  color: var(--brand-deep);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 0.6em 0.2em;
+}
+.btn-ghost:hover { color: var(--brand-deep); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+}
+
+.section { padding: var(--space-7) 0; }
+.section-divider { border-top: 1px solid var(--line); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(.2,.7,.3,1), transform 0.7s cubic-bezier(.2,.7,.3,1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Pastille numÃ©rotÃ©e faÃ§on Ã©tape / index */
+.step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+
+
+

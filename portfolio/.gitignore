@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+*.log
+npm-debug.log*
+.vscode/
+
+# Documents uploadés par l'utilisateur (Kanban, RACI, captures...) — ne pas versionner
+server/uploads/*
+!server/uploads/.gitkeep
+!server/uploads/index.json
